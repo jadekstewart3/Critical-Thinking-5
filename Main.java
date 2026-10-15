@@ -13,7 +13,25 @@ public class Main {
     userInput = scnr.nextLine().trim();
 
     while(!userInput.equalsIgnoreCase("quit")){
-      
+      if(userInput.equalsIgnoreCase("week")){
+        float weekAverage = weeklyTempAverage(temps);
+        for(index =0; index < weekDays.length; index++){
+          System.out.println(weekDays[index] + ": " + temps[index] + "F |");
+          System.out.println("Weekly average: " + weekAverage);
+        }
+      }
     }
+    scnr.close();
+  }
+
+  private static float weeklyTempAverage(float[] temps){
+    float total = 0.0f;
+    float average = 0.0f;
+
+    for(float temp : temps){
+      total += temp;
+    }
+    average = total / temps.length;
+    return average;
   }
 }
